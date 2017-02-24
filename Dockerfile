@@ -44,8 +44,7 @@ RUN DEBIAN_FRONTEND=noninteractive dpkg --add-architecture i386 \
 RUN cd /opt && \
     wget -q https://dl.google.com/android/repository/tools_r25.1.7-linux.zip -O android-tools-linux.zip && \
     unzip android-tools-linux.zip -d ${ANDROID_HOME} && \
-    rm -f android-tools-linux.zip && \
-    find ${ANDROID_HOME} -type d -exec chmod u+w {} \;
+    rm -f android-tools-linux.zip
 
 # Grab what's needed in the SDK
 # ↓ updates tools to at least 25.1.7, but that prints 'Nothing was installed' (so I don't check the outputs).

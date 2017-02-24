@@ -43,6 +43,7 @@ try {
                   "-v ${env.HOME}/.android:/tmp/.android " +
                   "-v ${env.HOME}/ccache:/tmp/.ccache " +
                   "-v ${env.HOME}/lcache:/tmp/.lcache " +
+                  "-v /opt/android-sdk-linux " +
                   "--network container:${rosContainer.id}") {
             stage('JVM tests') {
               try {
