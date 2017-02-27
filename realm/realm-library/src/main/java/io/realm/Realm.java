@@ -47,7 +47,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import io.realm.exceptions.RealmException;
 import io.realm.exceptions.RealmFileException;
 import io.realm.exceptions.RealmMigrationNeededException;
-import io.realm.internal.Capabilities;
 import io.realm.internal.ColumnIndices;
 import io.realm.internal.ColumnInfo;
 import io.realm.internal.ObjectServerFacade;
@@ -361,7 +360,7 @@ public class Realm extends BaseRealm implements RealmObservable<Realm> {
             }
         } catch (Exception e) {
             commitChanges = false;
-            throw new RuntimeException(e);
+            throw e;
         } finally {
             if (commitChanges) {
                 realm.commitTransaction();
@@ -420,7 +419,7 @@ public class Realm extends BaseRealm implements RealmObservable<Realm> {
             }
         } catch (Exception e) {
             commitChanges = false;
-            throw new RuntimeException(e);
+            throw e;
         } finally {
             if (commitChanges) {
                 realm.commitTransaction();
@@ -1326,7 +1325,7 @@ public class Realm extends BaseRealm implements RealmObservable<Realm> {
             } else {
                 RealmLog.warn("Could not cancel transaction, not currently in a transaction.");
             }
-            throw new RuntimeException(e);
+            throw e;
         }
     }
 
